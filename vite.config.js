@@ -7,13 +7,14 @@ function normalizeLittleBigFeelingsAssets() {
     name: 'normalize-little-big-feelings-assets',
     enforce: 'pre',
     transform(code, id) {
-      const isLittleBigFeelings = id.includes(`${resolve(__dirname, 'src/games/Little-Big-Feelings')}`)
-      const isFeelingFusion = id.includes(`${resolve(__dirname, 'src/games/Feeling-Fusion')}`)
+      const normalizedId = id.replace(/\\/g, '/')
+      const isLittleBigFeelings = normalizedId.includes('src/games/Little-Big-Feelings')
+      const isFeelingFusion = normalizedId.includes('src/games/Feeling-Fusion')
       if (!isLittleBigFeelings && !isFeelingFusion) {
         return null
       }
 
-      if (!/\.(html|js)$/.test(id)) return null
+      if (!/\.(html|js)$/.test(normalizedId)) return null
 
       const normalized = code.replace(/(['"`])assets\//g, '$1/assets/')
       return normalized === code ? null : { code: normalized, map: null }

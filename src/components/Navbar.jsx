@@ -34,6 +34,9 @@ export function Navbar({
     if (currentView === 'little_big_feelings') return 'Little Big Feelings';
     if (currentView === 'stick_man') return 'Stick Man to the Rescue';
     if (currentView === 'mindscape_defense') return 'Mindscape Defense';
+    if (currentView === 'feeling_fusion') return 'Feeling Fusion';
+    if (currentView === 'myth_vs_fact') return 'Myth vs Fact';
+    if (currentView === 'signal_scout') return 'Signal Scout';
     return 'Arcade Collection';
   };
 
