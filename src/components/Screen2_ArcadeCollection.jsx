@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Search, Sparkles, Play, Rocket, Filter } from 'lucide-react';
+import { Search, Sparkles, Play, Rocket } from 'lucide-react';
 import { sounds } from '../SoundEffects';
 
 export function Screen2_ArcadeCollection({ onSelectGame }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const games = [
     {
@@ -33,32 +32,6 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       )
     },
     {
-      id: 'plush_match',
-      title: 'Plush Match',
-      category: 'Tactile Pairs',
-      tag: 'SOOTHING',
-      badgeColor: 'bg-zen-tealBg text-zen-teal',
-      description: 'Match soothing pairs & unbind your mind with gentle tactile cards.',
-      bgGradient: 'from-[#E7F2F2] to-[#D5E8E8]',
-      borderColor: 'border-zen-teal/40',
-      imageSvg: (
-        <svg className="w-full h-32 object-contain" viewBox="0 0 200 120" fill="none">
-          <rect width="200" height="120" rx="16" fill="#E7F2F2" />
-          <circle cx="75" cy="65" r="22" fill="#76C4C6" />
-          <circle cx="68" cy="60" r="3" fill="#4A353B" />
-          <circle cx="82" cy="60" r="3" fill="#4A353B" />
-          <path d="M72 68C74 70 76 70 78 68" stroke="#4A353B" strokeWidth="2" strokeLinecap="round" />
-
-          <circle cx="125" cy="65" r="22" fill="#F7C5D1" />
-          <circle cx="118" cy="60" r="3" fill="#4A353B" />
-          <circle cx="132" cy="60" r="3" fill="#4A353B" />
-          <path d="M122 68C124 70 126 70 128 68" stroke="#4A353B" strokeWidth="2" strokeLinecap="round" />
-
-          <path d="M100 45 L102 50 L107 52 L102 54 L100 59 L98 54 L93 52 L98 50 Z" fill="#EADF9E" />
-        </svg>
-      )
-    },
-    {
       id: 'stick_man',
       title: 'Stick Man to the Rescue',
       category: 'Physics & Play',
@@ -74,26 +47,6 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
           <circle cx="100" cy="40" r="10" stroke="#4A353B" strokeWidth="3" fill="#FFF" />
           <path d="M100 50 V 70 M100 58 L 85 65 M100 58 L 115 50 M100 70 L 90 85 M100 70 L 110 85" stroke="#4A353B" strokeWidth="3" strokeLinecap="round" />
           <polygon points="150,35 153,42 160,43 155,48 156,55 150,51 144,55 145,48 140,43 147,42" fill="#EADF9E" stroke="#7A8450" strokeWidth="1" />
-        </svg>
-      )
-    },
-    {
-      id: 'signal_cloud',
-      title: 'Signal Cloud',
-      category: 'Pathway Flow',
-      tag: 'SERENE',
-      badgeColor: 'bg-zen-pinkAccent text-zen-mauve',
-      description: 'Guide signals through soft cloud routes and serene pathways.',
-      bgGradient: 'from-[#FFF0F3] to-[#FCDAE2]',
-      borderColor: 'border-zen-pinkAccent',
-      imageSvg: (
-        <svg className="w-full h-32 object-contain" viewBox="0 0 200 120" fill="none">
-          <rect width="200" height="120" rx="16" fill="#FFF0F3" />
-          <path d="M30 60 Q 60 20 100 60 T 170 60" stroke="#A86B79" strokeWidth="4" strokeDasharray="6 6" fill="none" />
-          <circle cx="60" cy="38" r="14" fill="#FFFFFF" stroke="#F7C5D1" strokeWidth="2" />
-          <circle cx="100" cy="60" r="16" fill="#FCEBEF" stroke="#A86B79" strokeWidth="2" />
-          <circle cx="140" cy="38" r="14" fill="#FFFFFF" stroke="#F7C5D1" strokeWidth="2" />
-          <polygon points="100,53 103,58 108,60 103,62 100,67 97,62 92,60 97,58" fill="#EADF9E" />
         </svg>
       )
     },
@@ -142,17 +95,52 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
           <circle cx="100" cy="60" r="45" stroke="#F7C5D1" strokeWidth="2" strokeDasharray="4 4" />
         </svg>
       )
+    },
+    {
+      id: 'feeling_fusion',
+      title: 'Feeling Fusion',
+      category: 'Mood & Feelings',
+      tag: 'DISCOVER',
+      badgeColor: 'bg-zen-yellow text-zen-plum',
+      description: 'Blend emotions together and discover what your feelings are trying to say.',
+      bgGradient: 'from-[#FFF7D6] to-[#FDECC8]',
+      borderColor: 'border-zen-yellow',
+      imageSvg: (
+        <div className="flex h-32 items-center justify-center bg-[#FFF7D6] text-5xl">✨💛✨</div>
+      )
+    },
+    {
+      id: 'myth_vs_fact',
+      title: 'Myth vs Fact',
+      category: 'Mindful Puzzles',
+      tag: 'LEARN',
+      badgeColor: 'bg-zen-tealBg text-zen-teal',
+      description: 'Sort mental-health statements into myths and facts through a calm card challenge.',
+      bgGradient: 'from-[#E8F7F5] to-[#D9EEEC]',
+      borderColor: 'border-zen-teal/40',
+      imageSvg: (
+        <div className="flex h-32 items-center justify-center gap-3 bg-[#E8F7F5] text-4xl">🧠⚖️</div>
+      )
+    },
+    {
+      id: 'signal_scout',
+      title: 'Signal Scout',
+      category: 'Pathway Flow',
+      tag: 'NOTICE',
+      badgeColor: 'bg-zen-pinkAccent text-zen-plum',
+      description: 'Learn to notice signals of distress and choose compassionate ways to respond.',
+      bgGradient: 'from-[#F3F0FF] to-[#E7E0FA]',
+      borderColor: 'border-indigo-200',
+      imageSvg: (
+        <div className="flex h-32 items-center justify-center bg-[#F3F0FF] text-5xl">📡💬</div>
+      )
     }
   ];
 
-  const categories = ['All', 'Mindful Puzzles', 'Tactile Pairs', 'Physics & Play', 'Pathway Flow', 'Mood & Feelings'];
-
-  const filteredGames = games.filter(game => {
-    const matchesCategory = selectedCategory === 'All' || game.category === selectedCategory;
-    const matchesSearch = game.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      game.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const visibleGames = games.filter(game =>
+    game.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    game.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="min-h-[calc(100vh-4rem)] p-4 sm:p-6 lg:p-10 max-w-7xl mx-auto">
@@ -185,29 +173,9 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
         </div>
       </div>
 
-      {/* Category Pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-6 no-scrollbar">
-        <Filter className="w-4 h-4 text-zen-mauve shrink-0 mr-1" />
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => {
-              setSelectedCategory(cat);
-              sounds.playClick();
-            }}
-            className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap ${selectedCategory === cat
-                ? 'bg-zen-plum text-white shadow-md'
-                : 'bg-white/70 text-zen-plum hover:bg-zen-pinkCard border border-zen-pinkAccent/30'
-              }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
       {/* Game Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredGames.map((game) => (
+        {visibleGames.map((game) => (
           <div
             key={game.id}
             onClick={() => {
