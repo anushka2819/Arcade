@@ -15,7 +15,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'A calming puzzle & quote builder to inspire mindfulness.',
       bgGradient: 'from-[#FFF3F5] to-[#FCEBEF]',
       borderColor: 'border-zen-pinkAccent',
-      imageUrl: '/stickman_assets/Words_Of_Wisdom-1024.png'
+      imageUrl: '/1.png'
     },
     {
       id: 'stick_man',
@@ -26,7 +26,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'A lighthearted physics puzzle to guide your stick figure home.',
       bgGradient: 'from-[#FAF7F2] to-[#E8E3C5]/40',
       borderColor: 'border-zen-creamBg',
-      imageUrl: '/stickman_assets/stickman_group.svg'
+      imageUrl: '/2.png'
     },
     {
       id: 'little_big_feelings',
@@ -37,7 +37,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'Explore and process your emotions with interactive blob friends.',
       bgGradient: 'from-[#EFF2E1] to-[#E3E8CE]',
       borderColor: 'border-zen-olive/40',
-      imageUrl: '/assets/brand/image.png'
+      imageUrl: '/3.png'
     },
     {
       id: 'mindscape_defense',
@@ -48,7 +48,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'Protect your inner peace in a relaxed strategy experience.',
       bgGradient: 'from-[#FAF2F4] to-[#FCEBEF]',
       borderColor: 'border-zen-mauve/30',
-      imageUrl: '/stickman_assets/shield_stickman.svg'
+      imageUrl: '/4.png'
     },
     {
       id: 'feeling_fusion',
@@ -59,7 +59,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'Blend emotions together and discover what your feelings are trying to say.',
       bgGradient: 'from-[#FFF7D6] to-[#FDECC8]',
       borderColor: 'border-zen-yellow',
-      imageUrl: '/assets/feeling_fusion/fusion_bg.svg'
+      imageUrl: '/5.png'
     },
     {
       id: 'myth_vs_fact',
@@ -70,7 +70,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'Sort mental-health statements into myths and facts through a calm card challenge.',
       bgGradient: 'from-[#E8F7F5] to-[#D9EEEC]',
       borderColor: 'border-zen-teal/40',
-      imageUrl: '/stickman_assets/scholar_stickman.svg'
+      imageUrl: '/6.png'
     },
     {
       id: 'signal_scout',
@@ -81,7 +81,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'Learn to notice signals of distress and choose compassionate ways to respond.',
       bgGradient: 'from-[#F3F0FF] to-[#E7E0FA]',
       borderColor: 'border-indigo-200',
-      imageUrl: '/stickman_assets/scout_stickman.svg'
+      imageUrl: '/bg-4.png'
     }
   ];
 
@@ -134,8 +134,8 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
           >
             <div>
               {/* Card Illustration */}
-              <div className="relative rounded-2xl overflow-hidden mb-4 shadow-sm group-hover:scale-102 transition-transform duration-300 h-36 bg-white/60 flex items-center justify-center p-3">
-                <img src={game.imageUrl} alt={game.title} className="max-h-full max-w-full object-contain drop-shadow-sm" />
+              <div className="relative rounded-2xl overflow-hidden mb-4 shadow-sm group-hover:scale-102 transition-transform duration-300 h-40 w-full">
+                <img src={game.imageUrl} alt={game.title} className="w-full h-full object-cover" />
                 <span className={`absolute top-3 left-3 text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 rounded-full shadow-sm ${game.badgeColor}`}>
                   {game.tag}
                 </span>
