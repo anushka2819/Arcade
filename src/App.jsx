@@ -2,9 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Screen1_Login } from './components/Screen1_Login';
 import { Screen2_ArcadeCollection } from './components/Screen2_ArcadeCollection';
+import { Screen3_WordsOfWisdom } from './components/Screen3_WordsOfWisdom';
+import { Screen4_LittleBigFeelings } from './components/Screen4_LittleBigFeelings';
+import { Screen5_StickManToRescue } from './components/Screen5_StickManToRescue';
+import { Screen_MindscapeDefense } from './components/Screen_MindscapeDefense';
+import { Screen_PlushMatch } from './components/Screen_PlushMatch';
+import { Screen_SignalCloud } from './components/Screen_SignalCloud';
 import { MiniGameModal } from './components/MiniGameModal';
 import { EmbeddedGame } from './components/EmbeddedGame';
 import { supabase } from './lib/supabase';
+
 
 export function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -153,19 +160,52 @@ export function App() {
             onSelectGame={handleSelectGame}
           />
         ) : currentView === 'words_of_wisdom' ? (
-          <EmbeddedGame gameId="words_of_wisdom" title="Words of Wisdom" onBackToArcade={handleGoToArcade} />
+          <Screen3_WordsOfWisdom
+            onBackToArcade={handleGoToArcade}
+            onPlayMiniGame={handlePlayMiniGame}
+            isAudioOn={isAudioOn}
+            setIsAudioOn={setIsAudioOn}
+            isDarkMode={isDarkMode}
+            setIsDarkMode={setIsDarkMode}
+            isParticlesOn={isParticlesOn}
+            setIsParticlesOn={setIsParticlesOn}
+          />
         ) : currentView === 'little_big_feelings' ? (
-          <EmbeddedGame gameId="little_big_feelings" title="Little Big Feelings" onBackToArcade={handleGoToArcade} />
+          <Screen4_LittleBigFeelings
+            onBackToArcade={handleGoToArcade}
+            onPlayMiniGame={handlePlayMiniGame}
+          />
         ) : currentView === 'stick_man' ? (
-          <EmbeddedGame gameId="stick_man" title="Stick Man to the Rescue" onBackToArcade={handleGoToArcade} />
+          <Screen5_StickManToRescue
+            onBackToArcade={handleGoToArcade}
+            onPlayMiniGame={handlePlayMiniGame}
+          />
         ) : currentView === 'mindscape_defense' ? (
-          <EmbeddedGame gameId="mindscape_defense" title="Mindscape Defense" onBackToArcade={handleGoToArcade} />
+          <Screen_MindscapeDefense
+            onBackToArcade={handleGoToArcade}
+            onPlayMiniGame={handlePlayMiniGame}
+          />
         ) : currentView === 'feeling_fusion' ? (
-          <EmbeddedGame gameId="feeling_fusion" title="Feeling Fusion" onBackToArcade={handleGoToArcade} />
+          <Screen_PlushMatch
+            onBackToArcade={handleGoToArcade}
+            onPlayMiniGame={handlePlayMiniGame}
+          />
         ) : currentView === 'myth_vs_fact' ? (
-          <EmbeddedGame gameId="myth_vs_fact" title="Myth vs Fact" onBackToArcade={handleGoToArcade} />
+          <Screen3_WordsOfWisdom
+            onBackToArcade={handleGoToArcade}
+            onPlayMiniGame={handlePlayMiniGame}
+            isAudioOn={isAudioOn}
+            setIsAudioOn={setIsAudioOn}
+            isDarkMode={isDarkMode}
+            setIsDarkMode={setIsDarkMode}
+            isParticlesOn={isParticlesOn}
+            setIsParticlesOn={setIsParticlesOn}
+          />
         ) : currentView === 'signal_scout' ? (
-          <EmbeddedGame gameId="signal_scout" title="Signal Scout" onBackToArcade={handleGoToArcade} />
+          <Screen_SignalCloud
+            onBackToArcade={handleGoToArcade}
+            onPlayMiniGame={handlePlayMiniGame}
+          />
         ) : (
           <Screen2_ArcadeCollection
             onSelectGame={handleSelectGame}

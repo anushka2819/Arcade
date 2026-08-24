@@ -247,8 +247,111 @@ export function MiniGameModal({ game, onClose }) {
           </div>
         )}
 
-        {/* 4. Default / Generic Game */}
-        {game?.id !== 'words_of_wisdom' && game?.id !== 'little_big_feelings' && game?.id !== 'stick_man' && (
+        {/* 4. Plush Match / Feeling Fusion Memory Game */}
+        {(game?.id === 'plush_match' || game?.id === 'feeling_fusion') && (
+          <div className="py-2 sm:py-4 text-center">
+            <p className="text-xs font-semibold text-zen-plum mb-4">
+              Tap cards to flip and match cozy plushie pairs:
+            </p>
+            <div className="grid grid-cols-4 gap-2.5 max-w-xs mx-auto mb-4">
+              {['🧸', '🌸', '✨', '☁️', '🧸', '🌸', '✨', '☁️'].map((emoji, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    sounds.playClick();
+                    setScore(prev => {
+                      const next = prev + 1;
+                      if (next >= 4) {
+                        setGameState('won');
+                        sounds.playLaunch();
+                        triggerConfetti();
+                      }
+                      return next;
+                    });
+                  }}
+                  className="w-14 h-14 rounded-2xl bg-zen-tealBg border-2 border-zen-teal/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center text-2xl shadow-sm"
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
+            <p className="text-[11px] text-zen-mauve font-medium">Matches Found: {Math.min(score, 4)} / 4</p>
+          </div>
+        )}
+
+        {/* 5. Mindscape Defense Game */}
+        {game?.id === 'mindscape_defense' && (
+          <div className="py-2 sm:py-4 text-center">
+            <p className="text-xs font-semibold text-zen-plum mb-3">
+              Tap the sanctuary crystal to generate peace shields against stress clouds:
+            </p>
+            <div className="relative w-36 h-36 mx-auto mb-4 bg-gradient-to-tr from-zen-pinkCard to-zen-cream rounded-full border-4 border-zen-pinkAccent shadow-zen flex items-center justify-center">
+              <button
+                onClick={() => {
+                  sounds.playClick();
+                  setScore(prev => {
+                    const next = prev + 25;
+                    if (next >= 100) {
+                      setGameState('won');
+                      sounds.playLaunch();
+                      triggerConfetti();
+                    }
+                    return next;
+                  });
+                }}
+                className="w-24 h-24 rounded-full bg-zen-plum text-white text-4xl shadow-md hover:scale-110 active:scale-95 transition-transform flex items-center justify-center"
+              >
+                🏰
+              </button>
+            </div>
+            <div className="w-full bg-zen-pinkLight rounded-full h-3 max-w-xs mx-auto overflow-hidden border border-zen-pinkAccent">
+              <div className="bg-zen-plum h-full transition-all duration-300" style={{ width: `${Math.min(score, 100)}%` }} />
+            </div>
+            <p className="text-[11px] text-zen-plum font-bold mt-2">Sanctuary Shield: {Math.min(score, 100)}%</p>
+          </div>
+        )}
+
+        {/* 6. Signal Cloud / Signal Scout Game */}
+        {(game?.id === 'signal_cloud' || game?.id === 'signal_scout') && (
+          <div className="py-2 sm:py-4 text-center">
+            <p className="text-xs font-semibold text-zen-plum mb-3">
+              Connect serene cloud nodes to form a continuous pathway:
+            </p>
+            <div className="flex justify-center items-center gap-3 mb-6">
+              {['📡', '☁️', '💬', '✨', '🌈'].map((node, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    sounds.playClick();
+                    setScore(prev => {
+                      const next = prev + 20;
+                      if (next >= 100) {
+                        setGameState('won');
+                        sounds.playLaunch();
+                        triggerConfetti();
+                      }
+                      return next;
+                    });
+                  }}
+                  className="w-12 h-12 rounded-full bg-zen-pinkHeader border-2 border-zen-pinkAccent text-xl flex items-center justify-center hover:scale-110 transition-transform shadow-sm"
+                >
+                  {node}
+                </button>
+              ))}
+            </div>
+            <p className="text-[11px] text-zen-mauve font-bold">Signal Connection: {Math.min(score, 100)}%</p>
+          </div>
+        )}
+
+        {/* 7. Default / Generic Game Fallback */}
+        {game?.id !== 'words_of_wisdom' && 
+         game?.id !== 'little_big_feelings' && 
+         game?.id !== 'stick_man' && 
+         game?.id !== 'plush_match' && 
+         game?.id !== 'feeling_fusion' && 
+         game?.id !== 'mindscape_defense' && 
+         game?.id !== 'signal_cloud' && 
+         game?.id !== 'signal_scout' && (
           <div className="py-8 text-center">
             <div className="w-24 h-24 rounded-full bg-zen-pinkLight border-4 border-zen-pinkAccent mx-auto flex items-center justify-center text-4xl mb-4 animate-pulse-glow">
               🧘
