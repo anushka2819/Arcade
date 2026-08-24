@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Little Big Feelings - Lumina Zen Arcade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background: #EFF2E1;
+        color: #4A353B;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+      h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+      .card {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        border: 2px solid #7A8450;
+        border-radius: 1.5rem;
+        padding: 2rem;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(122, 132, 80, 0.12);
+        text-align: center;
+      }
+      .banner-img {
+        width: 100%;
+        max-height: 180px;
+        object-fit: cover;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+      .blob-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      .blob-btn {
+        background: white;
+        border: 2px solid #EFF2E1;
+        border-radius: 1.25rem;
+        padding: 1rem;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .blob-btn:hover {
+        transform: scale(1.08) translateY(-4px);
+        border-color: #7A8450;
+        box-shadow: 0 8px 20px rgba(122, 132, 80, 0.15);
+      }
+      .blob-emoji { font-size: 2.5rem; animation: float 3s ease-in-out infinite; }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+      }
+      .log-box {
+        background: #EFF2E1;
+        border-radius: 1rem;
+        padding: 1rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #4A353B;
+        margin-top: 1rem;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="/3.png" alt="Little Big Feelings" class="banner-img" />
+      <h2>🧸 Little Big Feelings</h2>
+      <p style="color: #7A8450; font-size: 0.85rem; margin-top: 0.25rem;">
+        How is your heart feeling today? Tap a blob friend to process your emotion:
+      </p>
+
+      <div class="blob-grid">
+        <button class="blob-btn" onclick="selectFeeling('Calm', '🌿', 'Finding quiet peace in your body.')">
+          <span class="blob-emoji">🌿</span>
+          <strong style="font-size: 0.85rem;">Calm</strong>
+        </button>
+        <button class="blob-btn" onclick="selectFeeling('Cozy', '☁️', 'Wrapped in warmth and comfort.')">
+          <span class="blob-emoji">☁️</span>
+          <strong style="font-size: 0.85rem;">Cozy</strong>
+        </button>
+        <button class="blob-btn" onclick="selectFeeling('Joyful', '✨', 'Sparkling with happiness & wonder.')">
+          <span class="blob-emoji">✨</span>
+          <strong style="font-size: 0.85rem;">Joyful</strong>
+        </button>
+        <button class="blob-btn" onclick="selectFeeling('Peaceful', '🌊', 'Riding smooth and gentle waves.')">
+          <span class="blob-emoji">🌊</span>
+          <strong style="font-size: 0.85rem;">Peaceful</strong>
+        </button>
+        <button class="blob-btn" onclick="selectFeeling('Loved', '💖', 'Surrounded by warmth & kindness.')">
+          <span class="blob-emoji">💖</span>
+          <strong style="font-size: 0.85rem;">Loved</strong>
+        </button>
+      </div>
+
+      <div class="log-box" id="logBox"></div>
+    </div>
+
+    <script>
+      function selectFeeling(name, emoji, desc) {
+        const logBox = document.getElementById('logBox');
+        logBox.style.display = 'block';
+        logBox.innerHTML = `${emoji} Checked in as <strong style="color: #7A8450;">${name}</strong>: ${desc}<br/><span style="font-size: 0.75rem; color: #A86B79;">Session logged in Lumina Zen Journal (+50 Calm Points)</span>`;
+        if (window.confetti) confetti({ particleCount: 60, spread: 60, origin: { y: 0.6 } });
+      }
+    </script>
+  </body>
+</html>

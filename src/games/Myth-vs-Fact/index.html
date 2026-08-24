@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Myth vs Fact - Lumina Zen Arcade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background: #E8F7F5;
+        color: #4A353B;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+      h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+      .card {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        border: 2px solid #4A7C7D;
+        border-radius: 1.5rem;
+        padding: 2rem;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(74, 124, 125, 0.12);
+        text-align: center;
+      }
+      .banner-img {
+        width: 100%;
+        max-height: 180px;
+        object-fit: cover;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+      .statement-card {
+        background: #E7F2F2;
+        border: 2px solid #4A7C7D;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 1.5rem 0;
+        min-height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .action-btns {
+        display: flex;
+        gap: 1rem;
+        justify-center: center;
+      }
+      .choice-btn {
+        flex: 1;
+        padding: 0.8rem;
+        border-radius: 1rem;
+        border: none;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-myth { background: #F7C5D1; color: #4A353B; }
+      .btn-fact { background: #4A7C7D; color: white; }
+      .choice-btn:hover { transform: translateY(-2px); }
+      .feedback-box {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="/6.png" alt="Myth vs Fact" class="banner-img" />
+      <h2>🧠 Myth vs Fact Challenge</h2>
+      <p style="color: #4A7C7D; font-size: 0.85rem; margin-top: 0.25rem;">
+        Is the following mental-health statement a Myth or a Fact?
+      </p>
+
+      <div class="statement-card" id="statementText">
+        Loading challenge...
+      </div>
+
+      <div class="action-btns">
+        <button class="choice-btn btn-myth" onclick="answer('MYTH')">❌ MYTH</button>
+        <button class="choice-btn btn-fact" onclick="answer('FACT')">✅ FACT</button>
+      </div>
+
+      <div class="feedback-box" id="feedbackBox"></div>
+    </div>
+
+    <script>
+      const questions = [
+        { statement: '"Asking for help is a sign of mental strength and self-awareness."', answer: 'FACT', explanation: 'Correct! Seeking support shows courage and active self-care.' },
+        { statement: '"Mental health challenges mean a person is weak or lazy."', answer: 'MYTH', explanation: 'Correct! Mental health conditions are medical & psychological, not a character flaw.' },
+        { statement: '"Mindfulness practices like deep breathing can help reduce anxiety."', answer: 'FACT', explanation: 'Correct! Deep breathing activates the parasympathetic nervous system.' }
+      ];
+      let currentIdx = 0;
+
+      function loadQuestion() {
+        document.getElementById('statementText').innerText = questions[currentIdx].statement;
+        document.getElementById('feedbackBox').style.display = 'none';
+      }
+
+      function answer(choice) {
+        const q = questions[currentIdx];
+        const feedback = document.getElementById('feedbackBox');
+        feedback.style.display = 'block';
+
+        if (choice === q.answer) {
+          feedback.style.background = '#E7F2F2';
+          feedback.style.color = '#4A7C7D';
+          feedback.innerText = '✨ ' + q.explanation;
+          if (window.confetti) confetti({ particleCount: 60, spread: 60, origin: { y: 0.6 } });
+        } else {
+          feedback.style.background = '#FCEBEF';
+          feedback.style.color = '#4A353B';
+          feedback.innerText = 'Incorrect! The correct answer is ' + q.answer + '.';
+        }
+
+        setTimeout(() => {
+          currentIdx = (currentIdx + 1) % questions.length;
+          loadQuestion();
+        }, 2500);
+      }
+
+      loadQuestion();
+    </script>
+  </body>
+</html>

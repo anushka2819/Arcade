@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Mindscape Defense - Lumina Zen Arcade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background: #FAF2F4;
+        color: #4A353B;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+      h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+      .card {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        border: 2px solid #F7C5D1;
+        border-radius: 1.5rem;
+        padding: 2rem;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(74, 53, 59, 0.08);
+        text-align: center;
+      }
+      .banner-img {
+        width: 100%;
+        max-height: 180px;
+        object-fit: cover;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+      .crystal-container {
+        width: 140px;
+        height: 140px;
+        margin: 1.5rem auto;
+        background: radial-gradient(circle, #FCEBEF 0%, #F7C5D1 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 25px rgba(247, 197, 209, 0.6);
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .crystal-container:active { transform: scale(0.95); }
+      .crystal-icon { font-size: 4rem; animation: pulse 2s infinite ease-in-out; }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+      }
+      .progress-bar-bg {
+        width: 100%;
+        height: 14px;
+        background: #FCEBEF;
+        border-radius: 1rem;
+        overflow: hidden;
+        border: 1px solid #F7C5D1;
+        margin-top: 1rem;
+      }
+      .progress-bar-fill {
+        height: 100%;
+        width: 0%;
+        background: #4A353B;
+        transition: width 0.3s ease;
+      }
+      .btn-primary {
+        background: #4A353B;
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 2rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="/4.png" alt="Mindscape Defense" class="banner-img" />
+      <h2>🏰 Mindscape Defense</h2>
+      <p style="color: #A86B79; font-size: 0.85rem; margin-top: 0.25rem;">
+        Protect your sanctuary crystal! Tap to generate peace shields against intrusive thoughts:
+      </p>
+
+      <div class="crystal-container" onclick="chargeShield()">
+        <span class="crystal-icon">💎</span>
+      </div>
+
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="shieldFill"></div>
+      </div>
+      <p style="font-size: 0.85rem; font-weight: 700; margin-top: 0.5rem;" id="statusText">Sanctuary Shield: 0%</p>
+
+      <div id="winOverlay" style="display: none; margin-top: 1rem; padding: 1rem; background: #EADF9E; border-radius: 1rem; font-weight: bold;">
+        🛡️ Sanctuary Fully Protected! Peace Shield Active 🛡️
+      </div>
+    </div>
+
+    <script>
+      let shieldPercent = 0;
+      function chargeShield() {
+        if (shieldPercent >= 100) return;
+        shieldPercent += 20;
+        document.getElementById('shieldFill').style.width = shieldPercent + '%';
+        document.getElementById('statusText').innerText = 'Sanctuary Shield: ' + shieldPercent + '%';
+
+        if (shieldPercent >= 100) {
+          document.getElementById('winOverlay').style.display = 'block';
+          if (window.confetti) confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Feeling Fusion - Lumina Zen Arcade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background: #FFF7D6;
+        color: #4A353B;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+      h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+      .card {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+        border: 2px solid #EADF9E;
+        border-radius: 1.5rem;
+        padding: 2rem;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(234, 223, 158, 0.2);
+        text-align: center;
+      }
+      .banner-img {
+        width: 100%;
+        max-height: 180px;
+        object-fit: cover;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+      .fusion-slots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      .slot {
+        width: 90px;
+        height: 90px;
+        border: 2px dashed #EADF9E;
+        border-radius: 1rem;
+        background: #FAF7F2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        font-weight: bold;
+      }
+      .btn-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+      .emotion-btn {
+        background: white;
+        border: 1px solid #EADF9E;
+        padding: 0.6rem 1rem;
+        border-radius: 1rem;
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .emotion-btn:hover { background: #FFF7D6; transform: scale(1.05); }
+      .result-box {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: #FAF7F2;
+        border-radius: 1rem;
+        border: 1px solid #EADF9E;
+        display: none;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="/5.png" alt="Feeling Fusion" class="banner-img" />
+      <h2>✨ Feeling Fusion</h2>
+      <p style="color: #7A8450; font-size: 0.85rem; margin-top: 0.25rem;">
+        Select 2 primary emotions to blend them into a complex synthesis:
+      </p>
+
+      <div class="fusion-slots">
+        <div class="slot" id="slot1">❓</div>
+        <span style="font-size: 1.5rem; font-weight: bold;">+</span>
+        <div class="slot" id="slot2">❓</div>
+      </div>
+
+      <div class="btn-grid">
+        <button class="emotion-btn" onclick="addEmotion('Joy 💛')">Joy 💛</button>
+        <button class="emotion-btn" onclick="addEmotion('Calm 🌿')">Calm 🌿</button>
+        <button class="emotion-btn" onclick="addEmotion('Hope 🌅')">Hope 🌅</button>
+        <button class="emotion-btn" onclick="addEmotion('Trust 🤝')">Trust 🤝</button>
+        <button class="emotion-btn" onclick="addEmotion('Wonder ✨')">Wonder ✨</button>
+      </div>
+
+      <div class="result-box" id="resultBox"></div>
+    </div>
+
+    <script>
+      let selected = [];
+      const combinations = {
+        "Joy 💛+Calm 🌿": "💖 Serenity (A peaceful inner joy)",
+        "Joy 💛+Hope 🌅": "🌟 Optimism (Bright expectation for tomorrow)",
+        "Calm 🌿+Trust 🤝": "🛡️ Harmony (Unshakeable security)",
+        "Trust 🤝+Wonder ✨": "🔮 Reverence (Deep awe and connection)"
+      };
+
+      function addEmotion(emotion) {
+        if (selected.length >= 2) selected = [];
+        selected.push(emotion);
+
+        document.getElementById('slot1').innerText = selected[0] ? selected[0].split(' ')[1] : '❓';
+        document.getElementById('slot2').innerText = selected[1] ? selected[1].split(' ')[1] : '❓';
+
+        if (selected.length === 2) {
+          const key1 = selected[0] + '+' + selected[1];
+          const key2 = selected[1] + '+' + selected[0];
+          const result = combinations[key1] || combinations[key2] || "🌈 Radiant Harmony (A novel blend of feelings!)";
+
+          const resultBox = document.getElementById('resultBox');
+          resultBox.style.display = 'block';
+          resultBox.innerHTML = `Fused Emotion: <br/><span style="font-size: 1.1rem; color: #4A353B;">${result}</span>`;
+          if (window.confetti) confetti({ particleCount: 70, spread: 70, origin: { y: 0.6 } });
+        }
+      }
+    </script>
+  </body>
+</html>
