@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Gamepad2, Settings, Trophy, Play, Volume2, Music, Zap, X, ArrowRight, ArrowLeft, Check, SlidersHorizontal } from 'lucide-react';
 import { sounds } from '../SoundEffects';
 
-export function Screen5_StickManToRescue({ 
-  onBackToArcade, 
-  onPlayMiniGame 
+export function Screen5_StickManToRescue({
+  onBackToArcade,
+  onPlayMiniGame
 }) {
   const [showPreferencesModal, setShowPreferencesModal] = useState(true);
   const [soundEffects, setSoundEffects] = useState(true);
@@ -32,15 +32,22 @@ export function Screen5_StickManToRescue({
 
   return (
     <div className="min-h-[calc(100vh-4rem)] p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto flex flex-col justify-center relative">
-      
+
       {/* MAIN CONTENT AREA */}
       <main className="w-full bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 lg:p-10 border border-zen-pinkAccent/40 shadow-zen flex flex-col justify-between relative overflow-hidden">
-        
+
         <div>
           {/* Header Banner with Stick Figure Vector */}
           <div className="flex flex-col items-center text-center mb-8">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
-              <img src="/2.png" alt="Stick Man to the Rescue" className="w-full h-full object-cover" />
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-zen-pinkLight via-zen-pinkCard to-zen-cream border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
+
+              {/* Stick Figure SVG Icon */}
+              <svg className="w-16 h-16" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="30" r="10" stroke="#4A353B" strokeWidth="3" fill="#FFF" />
+                <path d="M50 40 V 65 M50 48 L 35 55 M50 48 L 65 42 M50 65 L 38 82 M50 65 L 62 82" stroke="#4A353B" strokeWidth="3" strokeLinecap="round" />
+                {/* Heart on chest */}
+                <path d="M48 48 C48 45 52 45 52 48 C52 50 48 52 48 52 Z" fill="#F7C5D1" />
+              </svg>
             </div>
 
             <h2 className="text-3xl font-extrabold text-zen-plum font-display">
@@ -53,7 +60,7 @@ export function Screen5_StickManToRescue({
 
           {/* Action Items List */}
           <div className="max-w-md mx-auto space-y-3 mb-8">
-            
+
             {/* 1. Resume Last Game */}
             <button
               onClick={() => {
@@ -129,7 +136,7 @@ export function Screen5_StickManToRescue({
         {/* INTERACTIVE PREFERENCES POPOVER MODAL (Matches Screen 5 screenshot overlay) */}
         {showPreferencesModal && (
           <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:w-80 bg-white/95 backdrop-blur-xl rounded-3xl p-5 border border-zen-pinkAccent/60 shadow-zen-lg transition-all animate-bounce-soft z-30">
-            
+
             {/* Modal Header */}
             <div className="flex items-center justify-between mb-4 pb-2 border-b border-zen-pinkAccent/30">
               <h4 className="text-xs font-extrabold text-zen-plum font-display uppercase tracking-wider">
@@ -145,7 +152,7 @@ export function Screen5_StickManToRescue({
 
             {/* Modal Switches List */}
             <div className="space-y-3.5">
-              
+
               {/* Sound Effects */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
@@ -157,9 +164,8 @@ export function Screen5_StickManToRescue({
 
                 <button
                   onClick={handleSoundToggle}
-                  className={`w-11 h-5 rounded-full transition-colors p-0.5 flex items-center ${
-                    soundEffects ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
-                  }`}
+                  className={`w-11 h-5 rounded-full transition-colors p-0.5 flex items-center ${soundEffects ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
+                    }`}
                 >
                   <div className="w-4 h-4 rounded-full bg-white shadow-sm flex items-center justify-center">
                     {soundEffects && <Check className="w-2.5 h-2.5 text-zen-plum" />}
@@ -178,9 +184,8 @@ export function Screen5_StickManToRescue({
 
                 <button
                   onClick={handleMusicToggle}
-                  className={`w-11 h-5 rounded-full transition-colors p-0.5 flex items-center ${
-                    gentleMusic ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
-                  }`}
+                  className={`w-11 h-5 rounded-full transition-colors p-0.5 flex items-center ${gentleMusic ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
+                    }`}
                 >
                   <div className="w-4 h-4 rounded-full bg-white shadow-sm flex items-center justify-center">
                     {gentleMusic && <Check className="w-2.5 h-2.5 text-zen-plum" />}
@@ -199,9 +204,8 @@ export function Screen5_StickManToRescue({
 
                 <button
                   onClick={handleVibToggle}
-                  className={`w-11 h-5 rounded-full transition-colors p-0.5 flex items-center ${
-                    vibration ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
-                  }`}
+                  className={`w-11 h-5 rounded-full transition-colors p-0.5 flex items-center ${vibration ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
+                    }`}
                 >
                   <div className="w-4 h-4 rounded-full bg-white shadow-sm flex items-center justify-center">
                     {vibration && <Check className="w-2.5 h-2.5 text-zen-plum" />}

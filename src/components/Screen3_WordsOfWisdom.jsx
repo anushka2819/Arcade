@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Gamepad2, Settings, User, Play, RotateCcw, BarChart3, Volume2, Moon, Sparkles, ArrowLeft, Check } from 'lucide-react';
 import { sounds } from '../SoundEffects';
 
-export function Screen3_WordsOfWisdom({ 
-  onBackToArcade, 
-  onPlayMiniGame, 
-  isAudioOn, 
-  setIsAudioOn, 
-  isDarkMode, 
+export function Screen3_WordsOfWisdom({
+  onBackToArcade,
+  onPlayMiniGame,
+  isAudioOn,
+  setIsAudioOn,
+  isDarkMode,
   setIsDarkMode,
   isParticlesOn,
   setIsParticlesOn
@@ -36,16 +36,16 @@ export function Screen3_WordsOfWisdom({
 
   return (
     <div className="min-h-[calc(100vh-4rem)] p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto flex flex-col justify-center">
-      
+
       {/* MAIN CONTENT AREA */}
       <main className="w-full bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 lg:p-10 border border-zen-pinkAccent/40 shadow-zen flex flex-col justify-between">
-        
+
         <div>
           {/* Header Banner & Mascot Icon */}
           <div className="flex flex-col items-center text-center mb-8">
-            <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
-              <img src="/1.png" alt="Words of Wisdom" className="w-full h-full object-cover" />
-              <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-zen-pinkAccent flex items-center justify-center text-xs shadow-sm">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-zen-pinkCard to-zen-cream border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
+              <span className="text-3xl animate-bounce-soft">📜</span>
+              <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-zen-pinkAccent flex items-center justify-center text-xs">
                 ✨
               </div>
             </div>
@@ -111,7 +111,7 @@ export function Screen3_WordsOfWisdom({
             </h4>
 
             <div className="space-y-4">
-              
+
               {/* Option 1: Ambient Audio */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -123,13 +123,12 @@ export function Screen3_WordsOfWisdom({
                     <p className="text-[10px] text-zen-mauve">Soft synthesized background chimes</p>
                   </div>
                 </div>
-                
+
                 {/* Switch */}
                 <button
                   onClick={handleAudioToggle}
-                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${
-                    isAudioOn ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
-                  }`}
+                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${isAudioOn ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
+                    }`}
                 >
                   <div className="w-4 h-4 rounded-full bg-white shadow-sm flex items-center justify-center">
                     {isAudioOn && <Check className="w-3 h-3 text-zen-plum" />}
@@ -152,9 +151,8 @@ export function Screen3_WordsOfWisdom({
                 {/* Switch */}
                 <button
                   onClick={handleDarkToggle}
-                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${
-                    isDarkMode ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
-                  }`}
+                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${isDarkMode ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
+                    }`}
                 >
                   <div className="w-4 h-4 rounded-full bg-white shadow-sm flex items-center justify-center">
                     {isDarkMode && <Check className="w-3 h-3 text-zen-plum" />}
@@ -177,9 +175,8 @@ export function Screen3_WordsOfWisdom({
                 {/* Switch */}
                 <button
                   onClick={handleParticlesToggle}
-                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${
-                    isParticlesOn ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
-                  }`}
+                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${isParticlesOn ? 'bg-zen-plum justify-end' : 'bg-zen-pinkAccent/60 justify-start'
+                    }`}
                 >
                   <div className="w-4 h-4 rounded-full bg-white shadow-sm flex items-center justify-center">
                     {isParticlesOn && <Check className="w-3 h-3 text-zen-plum" />}

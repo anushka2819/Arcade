@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Gamepad2, Sliders, User, Play, Sparkles, Lightbulb, Volume2, Eye, ShieldAlert, ArrowLeft, Check } from 'lucide-react';
 import { sounds } from '../SoundEffects';
 
-export function Screen4_LittleBigFeelings({ 
-  onBackToArcade, 
-  onPlayMiniGame 
+export function Screen4_LittleBigFeelings({
+  onBackToArcade,
+  onPlayMiniGame
 }) {
   const [activeTab, setActiveTab] = useState('settings');
   const [sfxEnabled, setSfxEnabled] = useState(true);
@@ -31,16 +31,16 @@ export function Screen4_LittleBigFeelings({
 
   return (
     <div className="min-h-[calc(100vh-4rem)] p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto flex flex-col justify-center">
-      
+
       {/* MAIN CONTENT AREA */}
       <main className="w-full bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 lg:p-10 border border-zen-pinkAccent/40 shadow-zen flex flex-col justify-between">
-        
+
         <div>
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-8">
-            <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
-              <img src="/3.png" alt="Little Big Feelings" className="w-full h-full object-cover" />
-              <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-zen-pinkHeader flex items-center justify-center text-xs shadow-sm">
+            <div className="w-20 h-20 rounded-full bg-zen-oliveBg border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
+              <span className="text-3xl animate-bounce-soft">🧸</span>
+              <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-zen-pinkHeader flex items-center justify-center text-xs">
                 💖
               </div>
             </div>
@@ -110,7 +110,7 @@ export function Screen4_LittleBigFeelings({
             </h4>
 
             <div className="space-y-4">
-              
+
               {/* Option 1: Sound Effects */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -125,9 +125,8 @@ export function Screen4_LittleBigFeelings({
 
                 <button
                   onClick={handleSfxToggle}
-                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${
-                    sfxEnabled ? 'bg-zen-teal justify-end' : 'bg-zen-pinkAccent/60 justify-start'
-                  }`}
+                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${sfxEnabled ? 'bg-zen-teal justify-end' : 'bg-zen-pinkAccent/60 justify-start'
+                    }`}
                 >
                   <div className="w-4 h-4 rounded-full bg-white shadow-sm flex items-center justify-center">
                     {sfxEnabled && <Check className="w-3 h-3 text-zen-teal" />}
@@ -149,9 +148,8 @@ export function Screen4_LittleBigFeelings({
 
                 <button
                   onClick={handleAnimToggle}
-                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${
-                    animationsEnabled ? 'bg-zen-teal justify-end' : 'bg-zen-pinkAccent/60 justify-start'
-                  }`}
+                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${animationsEnabled ? 'bg-zen-teal justify-end' : 'bg-zen-pinkAccent/60 justify-start'
+                    }`}
                 >
                   <div className="w-4 h-4 rounded-full bg-white shadow-sm flex items-center justify-center">
                     {animationsEnabled && <Check className="w-3 h-3 text-zen-teal" />}
@@ -173,9 +171,8 @@ export function Screen4_LittleBigFeelings({
 
                 <button
                   onClick={handleFocusToggle}
-                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${
-                    focusModeEnabled ? 'bg-zen-teal justify-end' : 'bg-zen-pinkAccent/60 justify-start'
-                  }`}
+                  className={`w-12 h-6 rounded-full transition-colors p-1 flex items-center ${focusModeEnabled ? 'bg-zen-teal justify-end' : 'bg-zen-pinkAccent/60 justify-start'
+                    }`}
                 >
                   <div className="w-4 h-4 rounded-full bg-white shadow-sm flex items-center justify-center">
                     {focusModeEnabled && <Check className="w-3 h-3 text-zen-teal" />}

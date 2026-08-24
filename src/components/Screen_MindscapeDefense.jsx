@@ -5,13 +5,13 @@ import { sounds } from '../SoundEffects';
 export function Screen_MindscapeDefense({ onBackToArcade, onPlayMiniGame }) {
   return (
     <div className="min-h-[calc(100vh-4rem)] p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto flex flex-col justify-center">
-      
+
       {/* Main Content */}
       <main className="w-full bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 lg:p-10 border border-zen-pinkAccent/40 shadow-zen flex flex-col justify-between">
         <div>
           <div className="flex flex-col items-center text-center mb-8">
-            <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
-              <img src="/4.png" alt="Mindscape Defense" className="w-full h-full object-cover" />
+            <div className="w-20 h-20 rounded-full bg-zen-pinkCard border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
+              <span className="text-3xl animate-bounce-soft">🏰</span>
             </div>
 
             <h2 className="text-3xl font-extrabold text-zen-plum font-display">
