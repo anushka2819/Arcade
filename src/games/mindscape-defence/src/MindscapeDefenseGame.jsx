@@ -30,9 +30,9 @@ export default function MindscapeDefenseGame() {
     <div className="min-h-screen bg-[#FAF2F4] text-[#4A353B] p-4 sm:p-6 flex flex-col items-center justify-center">
       <div className="max-w-xl w-full bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-[#F7C5D1] shadow-xl text-center">
         
-        <div className="relative rounded-2xl overflow-hidden mb-6 h-40 shadow-sm">
-          <img src="/4.png" alt="Mindscape Defense" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+        <div className="relative rounded-2xl overflow-hidden mb-6 h-40 shadow-sm bg-white/80 border border-[#F7C5D1]/50 flex items-center justify-center p-3">
+          <img src="/stickman_assets/shield_stickman.svg" alt="Mindscape Defense" className="max-h-full max-w-full object-contain drop-shadow-sm" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-4">
             <h2 className="text-2xl font-bold text-white font-display flex items-center gap-2">
               <Shield className="w-6 h-6 text-[#F7C5D1]" />
               Mindscape Defense

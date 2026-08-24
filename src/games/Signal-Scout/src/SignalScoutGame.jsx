@@ -22,9 +22,9 @@ export default function SignalScoutGame() {
     <div className="min-h-screen bg-[#F3F0FF] text-[#4A353B] p-4 sm:p-6 flex flex-col items-center justify-center">
       <div className="max-w-xl w-full bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-indigo-200 shadow-xl text-center">
         
-        <div className="relative rounded-2xl overflow-hidden mb-6 h-40 shadow-sm">
-          <img src="/bg-4.png" alt="Signal Scout" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+        <div className="relative rounded-2xl overflow-hidden mb-6 h-40 shadow-sm bg-white/80 border border-indigo-200/50 flex items-center justify-center p-3">
+          <img src="/stickman_assets/scout_stickman.svg" alt="Signal Scout" className="max-h-full max-w-full object-contain drop-shadow-sm" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-4">
             <h2 className="text-2xl font-bold text-white font-display flex items-center gap-2">
               <Compass className="w-6 h-6 text-indigo-300" />
               Signal Scout
