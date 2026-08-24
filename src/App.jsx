@@ -160,52 +160,19 @@ export function App() {
             onSelectGame={handleSelectGame}
           />
         ) : currentView === 'words_of_wisdom' ? (
-          <Screen3_WordsOfWisdom
-            onBackToArcade={handleGoToArcade}
-            onPlayMiniGame={handlePlayMiniGame}
-            isAudioOn={isAudioOn}
-            setIsAudioOn={setIsAudioOn}
-            isDarkMode={isDarkMode}
-            setIsDarkMode={setIsDarkMode}
-            isParticlesOn={isParticlesOn}
-            setIsParticlesOn={setIsParticlesOn}
-          />
+          <EmbeddedGame gameId="words_of_wisdom" title="Words of Wisdom" onBackToArcade={handleGoToArcade} />
         ) : currentView === 'little_big_feelings' ? (
-          <Screen4_LittleBigFeelings
-            onBackToArcade={handleGoToArcade}
-            onPlayMiniGame={handlePlayMiniGame}
-          />
+          <EmbeddedGame gameId="little_big_feelings" title="Little Big Feelings" onBackToArcade={handleGoToArcade} />
         ) : currentView === 'stick_man' ? (
-          <Screen5_StickManToRescue
-            onBackToArcade={handleGoToArcade}
-            onPlayMiniGame={handlePlayMiniGame}
-          />
+          <EmbeddedGame gameId="stick_man" title="Stick Man to the Rescue" onBackToArcade={handleGoToArcade} />
         ) : currentView === 'mindscape_defense' ? (
-          <Screen_MindscapeDefense
-            onBackToArcade={handleGoToArcade}
-            onPlayMiniGame={handlePlayMiniGame}
-          />
+          <EmbeddedGame gameId="mindscape_defense" title="Mindscape Defense" onBackToArcade={handleGoToArcade} />
         ) : currentView === 'feeling_fusion' ? (
-          <Screen_PlushMatch
-            onBackToArcade={handleGoToArcade}
-            onPlayMiniGame={handlePlayMiniGame}
-          />
+          <EmbeddedGame gameId="feeling_fusion" title="Feeling Fusion" onBackToArcade={handleGoToArcade} />
         ) : currentView === 'myth_vs_fact' ? (
-          <Screen3_WordsOfWisdom
-            onBackToArcade={handleGoToArcade}
-            onPlayMiniGame={handlePlayMiniGame}
-            isAudioOn={isAudioOn}
-            setIsAudioOn={setIsAudioOn}
-            isDarkMode={isDarkMode}
-            setIsDarkMode={setIsDarkMode}
-            isParticlesOn={isParticlesOn}
-            setIsParticlesOn={setIsParticlesOn}
-          />
+          <EmbeddedGame gameId="myth_vs_fact" title="Myth vs Fact" onBackToArcade={handleGoToArcade} />
         ) : currentView === 'signal_scout' ? (
-          <Screen_SignalCloud
-            onBackToArcade={handleGoToArcade}
-            onPlayMiniGame={handlePlayMiniGame}
-          />
+          <EmbeddedGame gameId="signal_scout" title="Signal Scout" onBackToArcade={handleGoToArcade} />
         ) : (
           <Screen2_ArcadeCollection
             onSelectGame={handleSelectGame}
