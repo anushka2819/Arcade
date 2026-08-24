@@ -21,6 +21,7 @@ export function App() {
   const [isAudioOn, setIsAudioOn] = useState(false);
   const [isParticlesOn, setIsParticlesOn] = useState(true);
   const [activeMiniGame, setActiveMiniGame] = useState(null);
+  const [activeStandaloneGame, setActiveStandaloneGame] = useState(null);
 
   const [user, setUser] = useState({
     name: 'Anushka',
@@ -66,27 +67,31 @@ export function App() {
     };
   }, []);
 
-  const handleLogin = async ({ email, password }) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    return { error: error?.message || null };
+  const handleLogin = (name, email) => {
+    setUser({
+      name: name || email?.split('@')[0] || 'Zen Explorer',
+      email: email || 'guest@luminazen.app',
+      avatar: '🧘'
+    });
+    setIsAuthenticated(true);
+    setCurrentView('arcade');
   };
 
-  const handleRegister = async ({ name, email, password }) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { data: { display_name: name } },
+  const handleRegister = (name, email) => {
+    setUser({
+      name: name || email?.split('@')[0] || 'Zen Explorer',
+      email: email || 'user@luminazen.app',
+      avatar: '🧘'
     });
-    if (error) return { error: error.message };
-    if (!data.session) return { message: 'Account created. Check your email to confirm your account, then log in.' };
-    return { error: null };
+    setIsAuthenticated(true);
+    setCurrentView('arcade');
   };
 
   const handleGuestAccess = () => {
     setUser({
-      name: 'Cozy Guest',
+      name: 'Zen Guest',
       email: 'guest@luminazen.app',
-      avatar: '✨'
+      avatar: '🌿'
     });
     setIsAuthenticated(true);
     setCurrentView('arcade');
@@ -94,7 +99,8 @@ export function App() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    setActiveMiniGame(null);
+    setIsAuthenticated(false);
+    setCurrentView('login');
   };
 
   const handleSelectGame = (gameId) => {
@@ -103,39 +109,37 @@ export function App() {
 
   const handleGoToArcade = () => {
     setCurrentView('arcade');
-    setActiveMiniGame(null);
+    setActiveStandaloneGame(null);
   };
 
   const handlePlayMiniGame = (game) => {
-    setActiveMiniGame(game);
+    setActiveStandaloneGame(game);
   };
 
-  const isGameView = isAuthenticated && currentView !== 'arcade' && currentView !== 'login';
-
   if (!authReady) {
-    return <div className="min-h-screen bg-[#FDF2F4]" />;
+    return (
+      <div className="min-h-screen bg-[#FDF2F4] text-[#4A353B] flex items-center justify-center font-sans">
+        <div className="text-center p-6 rounded-3xl bg-white/70 backdrop-blur border border-zen-pinkAccent shadow-zen animate-pulse">
+          <span className="text-4xl block mb-2">🧘</span>
+          <p className="text-sm font-bold font-display text-zen-plum">Entering Lumina Zen Arcade...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 relative ${
-      isDarkMode 
-        ? 'bg-[#2A1D22] text-[#F3EFEF]' 
-        : 'bg-[#FDF2F4] text-[#4A353B]'
-    }`}>
-      
-      {/* Floating Particles Background */}
-      {isParticlesOn && (
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-          <div className="absolute top-1/4 left-10 w-2 h-2 rounded-full bg-zen-pinkAccent opacity-60 animate-ping" />
-          <div className="absolute top-2/3 right-12 w-3 h-3 rounded-full bg-zen-teal opacity-50 animate-bounce-soft" />
-          <div className="absolute bottom-1/4 left-1/3 w-2 h-2 rounded-full bg-zen-yellow opacity-70 animate-pulse-glow" />
-        </div>
-      )}
+    <div className={`min-h-screen ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-[#FDF2F4] text-[#4A353B]'} font-sans relative overflow-x-hidden selection:bg-zen-pinkAccent selection:text-zen-plum transition-colors duration-300`}>
 
-      {/* Keep game pages fully immersive; each game owns its own controls. */}
-      {!isGameView && (
+      {/* Global Background Glow Effects */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-zen-pinkAccent/30 blur-3xl opacity-60 animate-pulse" />
+        <div className="absolute top-1/2 -right-24 w-96 h-96 rounded-full bg-zen-yellow/20 blur-3xl opacity-50" />
+        <div className="absolute -bottom-24 left-1/3 w-96 h-96 rounded-full bg-zen-tealBg/40 blur-3xl opacity-50" />
+      </div>
+
+      {/* Persistent Navbar */}
+      {isAuthenticated && currentView !== 'login' && !activeStandaloneGame && (
         <Navbar
-          isAuthenticated={isAuthenticated}
           currentView={currentView}
           onGoToArcade={handleGoToArcade}
           onLogout={handleLogout}
@@ -147,38 +151,110 @@ export function App() {
         />
       )}
 
-      {/* View Router */}
-      <div className="relative z-10">
-        {!isAuthenticated || currentView === 'login' ? (
-          <Screen1_Login
-            onLogin={handleLogin}
-            onRegister={handleRegister}
-            onGuestAccess={handleGuestAccess}
-          />
-        ) : currentView === 'arcade' ? (
-          <Screen2_ArcadeCollection
-            onSelectGame={handleSelectGame}
-          />
-        ) : currentView === 'words_of_wisdom' ? (
-          <EmbeddedGame gameId="words_of_wisdom" title="Words of Wisdom" onBackToArcade={handleGoToArcade} />
-        ) : currentView === 'little_big_feelings' ? (
-          <EmbeddedGame gameId="little_big_feelings" title="Little Big Feelings" onBackToArcade={handleGoToArcade} />
-        ) : currentView === 'stick_man' ? (
-          <EmbeddedGame gameId="stick_man" title="Stick Man to the Rescue" onBackToArcade={handleGoToArcade} />
-        ) : currentView === 'mindscape_defense' ? (
-          <EmbeddedGame gameId="mindscape_defense" title="Mindscape Defense" onBackToArcade={handleGoToArcade} />
-        ) : currentView === 'feeling_fusion' ? (
-          <EmbeddedGame gameId="feeling_fusion" title="Feeling Fusion" onBackToArcade={handleGoToArcade} />
-        ) : currentView === 'myth_vs_fact' ? (
-          <EmbeddedGame gameId="myth_vs_fact" title="Myth vs Fact" onBackToArcade={handleGoToArcade} />
-        ) : currentView === 'signal_scout' ? (
-          <EmbeddedGame gameId="signal_scout" title="Signal Scout" onBackToArcade={handleGoToArcade} />
-        ) : (
-          <Screen2_ArcadeCollection
-            onSelectGame={handleSelectGame}
-          />
-        )}
-      </div>
+      {/* Standalone Full-screen Embedded Game Overlay */}
+      {activeStandaloneGame ? (
+        <EmbeddedGame
+          gameId={activeStandaloneGame.id}
+          title={activeStandaloneGame.title}
+          onBackToArcade={() => setActiveStandaloneGame(null)}
+        />
+      ) : (
+        /* View Router */
+        <div className="relative z-10">
+          {!isAuthenticated || currentView === 'login' ? (
+            <Screen1_Login
+              onLogin={handleLogin}
+              onRegister={handleRegister}
+              onGuestAccess={handleGuestAccess}
+            />
+          ) : currentView === 'arcade' ? (
+            <Screen2_ArcadeCollection
+              onSelectGame={handleSelectGame}
+            />
+          ) : currentView === 'words_of_wisdom' ? (
+            <Screen3_WordsOfWisdom
+              onBackToArcade={handleGoToArcade}
+              onPlayMiniGame={handlePlayMiniGame}
+              isAudioOn={isAudioOn}
+              setIsAudioOn={setIsAudioOn}
+              isDarkMode={isDarkMode}
+              setIsDarkMode={setIsDarkMode}
+              isParticlesOn={isParticlesOn}
+              setIsParticlesOn={setIsParticlesOn}
+            />
+          ) : currentView === 'little_big_feelings' ? (
+            <Screen4_LittleBigFeelings
+              onBackToArcade={handleGoToArcade}
+              onPlayMiniGame={handlePlayMiniGame}
+              isAudioOn={isAudioOn}
+              setIsAudioOn={setIsAudioOn}
+              isDarkMode={isDarkMode}
+              setIsDarkMode={setIsDarkMode}
+              isParticlesOn={isParticlesOn}
+              setIsParticlesOn={setIsParticlesOn}
+            />
+          ) : currentView === 'stick_man' ? (
+            <Screen5_StickManToRescue
+              onBackToArcade={handleGoToArcade}
+              onPlayMiniGame={handlePlayMiniGame}
+              isAudioOn={isAudioOn}
+              setIsAudioOn={setIsAudioOn}
+              isDarkMode={isDarkMode}
+              setIsDarkMode={setIsDarkMode}
+              isParticlesOn={isParticlesOn}
+              setIsParticlesOn={setIsParticlesOn}
+            />
+          ) : currentView === 'mindscape_defense' ? (
+            <Screen_MindscapeDefense
+              onBackToArcade={handleGoToArcade}
+              onPlayMiniGame={handlePlayMiniGame}
+              isAudioOn={isAudioOn}
+              setIsAudioOn={setIsAudioOn}
+              isDarkMode={isDarkMode}
+              setIsDarkMode={setIsDarkMode}
+              isParticlesOn={isParticlesOn}
+              setIsParticlesOn={setIsParticlesOn}
+            />
+          ) : currentView === 'feeling_fusion' ? (
+            <Screen_PlushMatch
+              onBackToArcade={handleGoToArcade}
+              onPlayMiniGame={handlePlayMiniGame}
+              isAudioOn={isAudioOn}
+              setIsAudioOn={setIsAudioOn}
+              isDarkMode={isDarkMode}
+              setIsDarkMode={setIsDarkMode}
+              isParticlesOn={isParticlesOn}
+              setIsParticlesOn={setIsParticlesOn}
+            />
+          ) : currentView === 'myth_vs_fact' ? (
+            <Screen3_WordsOfWisdom
+              onBackToArcade={handleGoToArcade}
+              onPlayMiniGame={handlePlayMiniGame}
+              isAudioOn={isAudioOn}
+              setIsAudioOn={setIsAudioOn}
+              isDarkMode={isDarkMode}
+              setIsDarkMode={setIsDarkMode}
+              isParticlesOn={isParticlesOn}
+              setIsParticlesOn={setIsParticlesOn}
+            />
+          ) : currentView === 'signal_scout' ? (
+            <Screen_SignalCloud
+              onBackToArcade={handleGoToArcade}
+              onPlayMiniGame={handlePlayMiniGame}
+              isAudioOn={isAudioOn}
+              setIsAudioOn={setIsAudioOn}
+              isDarkMode={isDarkMode}
+              setIsDarkMode={setIsDarkMode}
+              isParticlesOn={isParticlesOn}
+              setIsParticlesOn={setIsParticlesOn}
+            />
+          ) : (
+            <Screen2_ArcadeCollection
+              onSelectGame={handleSelectGame}
+            />
+          )}
+        </div>
+      )}
 
       {/* Mini Game Modal Overlay */}
       {activeMiniGame && (

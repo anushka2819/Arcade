@@ -38,11 +38,8 @@ export function Screen4_LittleBigFeelings({
         <div>
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-8">
-            <div className="w-20 h-20 rounded-full bg-zen-oliveBg border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
-              <span className="text-3xl animate-bounce-soft">🧸</span>
-              <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-zen-pinkHeader flex items-center justify-center text-xs">
-                💖
-              </div>
+            <div className="relative rounded-2xl overflow-hidden mb-4 shadow-sm h-40 w-full max-w-md bg-white/80 border border-zen-olive/40 flex items-center justify-center p-3">
+              <img src="/assets/brand/image.png" alt="Little Big Feelings" className="max-h-full max-w-full object-contain drop-shadow-sm" />
             </div>
 
             <h2 className="text-3xl font-extrabold text-zen-plum font-display">

@@ -43,11 +43,8 @@ export function Screen3_WordsOfWisdom({
         <div>
           {/* Header Banner & Mascot Icon */}
           <div className="flex flex-col items-center text-center mb-8">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-zen-pinkCard to-zen-cream border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
-              <span className="text-3xl animate-bounce-soft">📜</span>
-              <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-zen-pinkAccent flex items-center justify-center text-xs">
-                ✨
-              </div>
+            <div className="relative rounded-2xl overflow-hidden mb-4 shadow-sm h-40 w-full max-w-md bg-white/80 border border-zen-pinkAccent/40 flex items-center justify-center p-3">
+              <img src="/stickman_assets/Words_Of_Wisdom-1024.png" alt="Words of Wisdom" className="max-h-full max-w-full object-contain drop-shadow-sm" />
             </div>
 
             <h2 className="text-3xl font-extrabold text-zen-plum font-display flex items-center gap-2">
