@@ -15,21 +15,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'A calming puzzle & quote builder to inspire mindfulness.',
       bgGradient: 'from-[#FFF3F5] to-[#FCEBEF]',
       borderColor: 'border-zen-pinkAccent',
-      imageSvg: (
-        <svg className="w-full h-32 object-contain" viewBox="0 0 200 120" fill="none">
-          <rect width="200" height="120" rx="16" fill="#FCEBEF" />
-          <ellipse cx="100" cy="80" rx="40" ry="25" fill="#FFFFFF" />
-          <ellipse cx="80" cy="70" rx="20" ry="20" fill="#FFFFFF" />
-          <ellipse cx="120" cy="70" rx="20" ry="20" fill="#FFFFFF" />
-          <path d="M94 65C95 67 97 67 98 65" stroke="#4A353B" strokeWidth="2" strokeLinecap="round" />
-          <path d="M102 65C103 67 105 67 106 65" stroke="#4A353B" strokeWidth="2" strokeLinecap="round" />
-          <path d="M85 75L100 80L115 75V88L100 92L85 88V75Z" fill="#F7C5D1" stroke="#A86B79" strokeWidth="1.5" />
-          <path d="M100 80V92" stroke="#A86B79" strokeWidth="1.5" />
-          <polygon points="100,20 103,28 111,31 103,34 100,42 97,34 89,31 97,28" fill="#EADF9E" />
-          <circle cx="50" cy="30" r="3" fill="#A86B79" />
-          <circle cx="155" cy="40" r="4" fill="#7A8450" />
-        </svg>
-      )
+      imageUrl: '/1.png'
     },
     {
       id: 'stick_man',
@@ -40,15 +26,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'A lighthearted physics puzzle to guide your stick figure home.',
       bgGradient: 'from-[#FAF7F2] to-[#E8E3C5]/40',
       borderColor: 'border-zen-creamBg',
-      imageSvg: (
-        <svg className="w-full h-32 object-contain" viewBox="0 0 200 120" fill="none">
-          <rect width="200" height="120" rx="16" fill="#FAF7F2" />
-          <path d="M30 90 Q 100 80 170 90 L 160 105 H 40 Z" fill="#7A8450" opacity="0.8" />
-          <circle cx="100" cy="40" r="10" stroke="#4A353B" strokeWidth="3" fill="#FFF" />
-          <path d="M100 50 V 70 M100 58 L 85 65 M100 58 L 115 50 M100 70 L 90 85 M100 70 L 110 85" stroke="#4A353B" strokeWidth="3" strokeLinecap="round" />
-          <polygon points="150,35 153,42 160,43 155,48 156,55 150,51 144,55 145,48 140,43 147,42" fill="#EADF9E" stroke="#7A8450" strokeWidth="1" />
-        </svg>
-      )
+      imageUrl: '/2.png'
     },
     {
       id: 'little_big_feelings',
@@ -59,23 +37,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'Explore and process your emotions with interactive blob friends.',
       bgGradient: 'from-[#EFF2E1] to-[#E3E8CE]',
       borderColor: 'border-zen-olive/40',
-      imageSvg: (
-        <svg className="w-full h-32 object-contain" viewBox="0 0 200 120" fill="none">
-          <rect width="200" height="120" rx="16" fill="#EFF2E1" />
-          <ellipse cx="60" cy="70" rx="18" ry="22" fill="#F7C5D1" />
-          <circle cx="55" cy="65" r="2.5" fill="#4A353B" />
-          <circle cx="65" cy="65" r="2.5" fill="#4A353B" />
-
-          <ellipse cx="100" cy="65" rx="24" ry="28" fill="#EADF9E" />
-          <circle cx="93" cy="60" r="3" fill="#4A353B" />
-          <circle cx="107" cy="60" r="3" fill="#4A353B" />
-          <path d="M96 68 Q 100 73 104 68" stroke="#4A353B" strokeWidth="2" strokeLinecap="round" />
-
-          <ellipse cx="140" cy="72" rx="16" ry="20" fill="#76C4C6" />
-          <circle cx="135" cy="68" r="2" fill="#4A353B" />
-          <circle cx="145" cy="68" r="2" fill="#4A353B" />
-        </svg>
-      )
+      imageUrl: '/3.png'
     },
     {
       id: 'mindscape_defense',
@@ -86,15 +48,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'Protect your inner peace in a relaxed strategy experience.',
       bgGradient: 'from-[#FAF2F4] to-[#FCEBEF]',
       borderColor: 'border-zen-mauve/30',
-      imageSvg: (
-        <svg className="w-full h-32 object-contain" viewBox="0 0 200 120" fill="none">
-          <rect width="200" height="120" rx="16" fill="#FAF2F4" />
-          <polygon points="100,25 125,55 75,55" fill="#A86B79" />
-          <rect x="85" y="55" width="30" height="35" fill="#FCEBEF" stroke="#A86B79" strokeWidth="2" />
-          <circle cx="100" cy="70" r="6" fill="#EADF9E" />
-          <circle cx="100" cy="60" r="45" stroke="#F7C5D1" strokeWidth="2" strokeDasharray="4 4" />
-        </svg>
-      )
+      imageUrl: '/4.png'
     },
     {
       id: 'feeling_fusion',
@@ -105,9 +59,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'Blend emotions together and discover what your feelings are trying to say.',
       bgGradient: 'from-[#FFF7D6] to-[#FDECC8]',
       borderColor: 'border-zen-yellow',
-      imageSvg: (
-        <div className="flex h-32 items-center justify-center bg-[#FFF7D6] text-5xl">✨💛✨</div>
-      )
+      imageUrl: '/5.png'
     },
     {
       id: 'myth_vs_fact',
@@ -118,9 +70,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'Sort mental-health statements into myths and facts through a calm card challenge.',
       bgGradient: 'from-[#E8F7F5] to-[#D9EEEC]',
       borderColor: 'border-zen-teal/40',
-      imageSvg: (
-        <div className="flex h-32 items-center justify-center gap-3 bg-[#E8F7F5] text-4xl">🧠⚖️</div>
-      )
+      imageUrl: '/6.png'
     },
     {
       id: 'signal_scout',
@@ -131,9 +81,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
       description: 'Learn to notice signals of distress and choose compassionate ways to respond.',
       bgGradient: 'from-[#F3F0FF] to-[#E7E0FA]',
       borderColor: 'border-indigo-200',
-      imageSvg: (
-        <div className="flex h-32 items-center justify-center bg-[#F3F0FF] text-5xl">📡💬</div>
-      )
+      imageUrl: '/bg-4.png'
     }
   ];
 
@@ -187,7 +135,7 @@ export function Screen2_ArcadeCollection({ onSelectGame }) {
             <div>
               {/* Card Illustration */}
               <div className="relative rounded-2xl overflow-hidden mb-4 shadow-sm group-hover:scale-102 transition-transform duration-300">
-                {game.imageSvg}
+                <img src={game.imageUrl} alt={game.title} className="w-full h-36 object-cover rounded-2xl" />
                 <span className={`absolute top-3 left-3 text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 rounded-full shadow-sm ${game.badgeColor}`}>
                   {game.tag}
                 </span>

@@ -39,15 +39,8 @@ export function Screen5_StickManToRescue({
         <div>
           {/* Header Banner with Stick Figure Vector */}
           <div className="flex flex-col items-center text-center mb-8">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-zen-pinkLight via-zen-pinkCard to-zen-cream border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
-              
-              {/* Stick Figure SVG Icon */}
-              <svg className="w-16 h-16" viewBox="0 0 100 100" fill="none">
-                <circle cx="50" cy="30" r="10" stroke="#4A353B" strokeWidth="3" fill="#FFF" />
-                <path d="M50 40 V 65 M50 48 L 35 55 M50 48 L 65 42 M50 65 L 38 82 M50 65 L 62 82" stroke="#4A353B" strokeWidth="3" strokeLinecap="round" />
-                {/* Heart on chest */}
-                <path d="M48 48 C48 45 52 45 52 48 C52 50 48 52 48 52 Z" fill="#F7C5D1" />
-              </svg>
+            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-md flex items-center justify-center mb-4 relative">
+              <img src="/2.png" alt="Stick Man to the Rescue" className="w-full h-full object-cover" />
             </div>
 
             <h2 className="text-3xl font-extrabold text-zen-plum font-display">
