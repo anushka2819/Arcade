@@ -3,106 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>Signal Scout - Lumina Zen Arcade</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        background: #F3F0FF;
-        color: #4A353B;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 1.5rem;
-      }
-      h1, h2, h3 { font-family: 'Outfit', sans-serif; }
-      .card {
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(16px);
-        border: 2px solid #C7D2FE;
-        border-radius: 1.5rem;
-        padding: 2rem;
-        max-width: 600px;
-        width: 100%;
-        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.12);
-        text-align: center;
-      }
-      .banner-img {
-        width: 100%;
-        max-height: 180px;
-        object-fit: cover;
-        border-radius: 1rem;
-        margin-bottom: 1rem;
-      }
-      .signal-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-        gap: 1rem;
-        margin: 1.5rem 0;
-      }
-      .signal-btn {
-        background: white;
-        border: 2px solid #E0E7FF;
-        border-radius: 1.25rem;
-        padding: 1rem;
-        cursor: pointer;
-        transition: all 0.2s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .signal-btn:hover { border-color: #6366F1; transform: translateY(-3px); }
-      .result-banner {
-        background: #E0E7FF;
-        border-radius: 1rem;
-        padding: 1rem;
-        font-weight: 700;
-        color: #3730A3;
-        display: none;
-        margin-top: 1rem;
-      }
-    </style>
+    <title>Signal Scout</title>
   </head>
   <body>
-    <div class="card">
-      <img src="/bg-4.png" alt="Signal Scout" class="banner-img" />
-      <h2>📡 Signal Scout</h2>
-      <p style="color: #6366F1; font-size: 0.85rem; margin-top: 0.25rem;">
-        Notice subtle distress signals in peers and choose compassionate support:
-      </p>
-
-      <div class="signal-grid">
-        <button class="signal-btn" onclick="scoutSignal('Withdrawing from friends', '💬 Offer a gentle check-in message without pressure.')">
-          <span style="font-size: 2rem;">🛋️</span>
-          <span style="font-size: 0.8rem; font-weight: 700;">Isolation</span>
-        </button>
-        <button class="signal-btn" onclick="scoutSignal('Unusually quiet or tired', '☕ Share a calm warm drink and listen attentively.')">
-          <span style="font-size: 2rem;">☕</span>
-          <span style="font-size: 0.8rem; font-weight: 700;">Fatigue</span>
-        </button>
-        <button class="signal-btn" onclick="scoutSignal('Expressing feeling overwhelmed', '🌿 Help break tasks into small, quiet steps.')">
-          <span style="font-size: 2rem;">🌊</span>
-          <span style="font-size: 0.8rem; font-weight: 700;">Overwhelmed</span>
-        </button>
-      </div>
-
-      <div class="result-banner" id="resultBanner"></div>
-    </div>
-
-    <script>
-      function scoutSignal(signal, response) {
-        const banner = document.getElementById('resultBanner');
-        banner.style.display = 'block';
-        banner.innerHTML = `Signal Noticed: <strong>${signal}</strong><br/><span style="color: #4A353B; font-weight: 600;">Compassionate Action: ${response}</span>`;
-        if (window.confetti) confetti({ particleCount: 70, spread: 70, origin: { y: 0.6 } });
-      }
-    </script>
+    <div id="root"></div>
+    <script type="module" src="./src/main.jsx"></script>
   </body>
 </html>
