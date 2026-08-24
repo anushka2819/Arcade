@@ -8,6 +8,7 @@ import { Screen5_StickManToRescue } from './components/Screen5_StickManToRescue'
 import { Screen_MindscapeDefense } from './components/Screen_MindscapeDefense';
 import { Screen_PlushMatch } from './components/Screen_PlushMatch';
 import { Screen_SignalCloud } from './components/Screen_SignalCloud';
+import { Screen_MythVsFact } from './components/Screen_MythVsFact';
 import { MiniGameModal } from './components/MiniGameModal';
 import { EmbeddedGame } from './components/EmbeddedGame';
 import { supabase } from './lib/supabase';
@@ -227,7 +228,7 @@ export function App() {
               setIsParticlesOn={setIsParticlesOn}
             />
           ) : currentView === 'myth_vs_fact' ? (
-            <Screen3_WordsOfWisdom
+            <Screen_MythVsFact
               onBackToArcade={handleGoToArcade}
               onPlayMiniGame={handlePlayMiniGame}
               isAudioOn={isAudioOn}
